@@ -7,7 +7,7 @@ import RemoveCar from '../buttons/RemoveCar'
 // import UpdateCard from '../forms/UpdatePeople'
 const getStyles = () => ({
     card: {
-      width: '500px'
+      width: '5000px'
     }
   })
 const CarCard = props => {
@@ -17,7 +17,7 @@ const CarCard = props => {
     const [make, setMake] = useState(props.make)
     const [model, setModel] = useState(props.model)
     const [price, setPrice] = useState(props.price)
-    const [person, setPerson] = useState(props.person)
+    const [personId, setPersonId] = useState(props.personId)
     const styles = getStyles()
 
     const [editMode,setEditMode] = useState(false)
@@ -51,7 +51,7 @@ const CarCard = props => {
         updateStateVariable={updateStateVariable}
       />
     ) : ( */}
-      <Card title={year + make} 
+      <Card title={year + '' + make + '' + model + '->' + '$' + price} 
       type = 'inner'
         // style={styles.card}
         actions={[

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {v4 as uuidv4}  from 'uuid';
-import {Button, Form, Input} from 'antd'
+import {Button, Divider, Form, Input} from 'antd'
 import { useMutation } from '@apollo/client';
 import { ADD_PEOPLE, GET_PEOPLE } from '../../queries';
 
@@ -40,6 +40,8 @@ const AddPeople = () => {
 
 
   return (
+    <div>
+        <h2 >Add Person</h2>
     <Form
       name='add-contact-form'
       form={form}
@@ -76,6 +78,7 @@ const AddPeople = () => {
         )}
       </Form.Item>
     </Form>
+    </div>
   )
 }
 

@@ -5,10 +5,10 @@ import { GET_CAR } from '../../queries'
 import CarCard from '../listItems/CarCard'
 
 const getStyles = () => ({
-  list: {
-    display: 'flex',
-    justifyContent: 'center'
-  }
+//   list: {
+//     display: 'flex',
+//     justifyContent: 'center'
+//   }
 })
 
 const Car = props => {
@@ -29,7 +29,7 @@ const Car = props => {
             .filter(car => car.personId === person[0]) // filter cars by personId 
              .map(({ id, make, model, price, year, personId }) => (
               <List.Item key={id}>
-                  {make} {model} {price} {year} {personId}
+                  <CarCard key={id} id={id} make={make} model={model} price={price} year={year} personId={personId}/>
              </List.Item>
   ))
 }

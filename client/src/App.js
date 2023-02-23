@@ -4,6 +4,7 @@ import AddPeople from './components/forms/AddPeople';
 import People from './components/lists/People';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { ApolloProvider } from '@apollo/client';
+import AddCar from './components/forms/AddCar';
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql",
@@ -17,6 +18,7 @@ const App = () => {
     <div className="App">
       <Title/>
       <AddPeople />
+      <AddCar />
       <People />
     </div>
     </ApolloProvider>

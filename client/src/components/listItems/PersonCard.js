@@ -8,7 +8,7 @@ import Car from '../lists/Car'
 
 const getStyles = () => ({
   card: {
-    width: '500px'
+    width: '1200px'
   }
 })
 

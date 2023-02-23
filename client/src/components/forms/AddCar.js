@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import {v4 as uuidv4}  from 'uuid';
-import {Button, Form, Input} from 'antd'
+import {Button, Form, Input,Dropdown, message, Space,} from 'antd'
 import { useMutation } from '@apollo/client';
 import { ADD_CAR, GET_CAR } from '../../queries';
-const {  DownOutlined, UserOutlined  } = icons;
-const {   Dropdown, message, Space, Tooltip  } = antd;
+import {  DownOutlined, UserOutlined  } from '@ant-design/icons';
+
 
 const AddCar = () => {
  
@@ -18,16 +18,16 @@ const AddCar = () => {
         forceUpdate([])
       }, [])
 
-      
+
       const handleMenuClick = (e) => {
         message.info('Click on menu item.');
         console.log('click', e);
       };
 
     const onFinish = values => {
-        const {firstName, lastName} = values
+        const {year, make,model,price,person} = values
         console.log(id)
-        addPeople(
+        addCar(
              {
             variables:{
                 id,
@@ -40,7 +40,7 @@ const AddCar = () => {
             update: (cache, { data: { addCar } }) => {
                 const data = cache.readQuery({ query: GET_CAR })
                 cache.writeQuery({
-                  query: GET_PEOPLE,
+                  query: GET_CAR,
                   data: {
                     ...data,
                     people: [...data.car, addCar]
@@ -81,6 +81,8 @@ const AddCar = () => {
       
 
   return (
+    <div>
+        <h2>Add Car</h2>
     <Form
       name='add-contact-form'
       form={form}
@@ -114,12 +116,12 @@ const AddCar = () => {
         name='price'
         rules={[{ required: true, message: 'Please input price' }]}
       >
-        <Input placeholder='$' />
+        <Input  placeholder='$' />
       </Form.Item>
 
       <Form.Item
         name='price'
-        rules={[{ required: true, message: 'Please input price' }]}
+        rules={[{ required: true, message: 'Please input person' }]}
       >
     <Dropdown menu={menuProps}>
       <Button>
@@ -146,6 +148,7 @@ const AddCar = () => {
         )}
       </Form.Item>
     </Form>
+    </div>
   )
 }
 
