@@ -23,8 +23,8 @@ const People = () => {
     <List grid={{ gutter: 20, column: 1 }} style={styles.list}>
        {data.people.map(({ id, firstName, lastName }) => (
         <List.Item key={id}>
-            {firstName}
-          {/* <PersonCard key={id} id={id} firstName={firstName} lastName={lastName} /> */}
+            {/* {firstName} */}
+          <PersonCard key={id} id={id} firstName={firstName} lastName={lastName} />
         </List.Item>
       ))}
      

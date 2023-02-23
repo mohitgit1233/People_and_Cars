@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import {v4 as uuidv4}  from 'uuid';
-import { useId } from 'react';
 import {Button, Form, Input} from 'antd'
 import { useMutation } from '@apollo/client';
 import { ADD_PEOPLE, GET_PEOPLE } from '../../queries';

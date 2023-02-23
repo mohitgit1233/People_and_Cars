@@ -20,22 +20,22 @@ export const ADD_PEOPLE = gql`
   }
 `
 
-// export const UPDATE_PEOPLE = gql`
-//   mutation UpdateContact($id: String!, $firstName: String!, $lastName: String!) {
-//     updateContact(id: $id, firstName: $firstName, lastName: $lastName) {
-//       id
-//       firstName
-//       lastName
-//     }
-//   }
-// `
+export const UPDATE_PEOPLE = gql`
+  mutation UpdatePeople($id: String!, $firstName: String!, $lastName: String!) {
+    updatePeople(id: $id, firstName: $firstName, lastName: $lastName) {
+      id
+      firstName
+      lastName
+    }
+  }
+`
 
-// export const REMOVE_POEPLE = gql`
-//   mutation RemoveContact($id: String!) {
-//     removeContact(id: $id) {
-//       id
-//       firstName
-//       lastName
-//     }
-//   }
-// `
+export const REMOVE_POEPLE = gql`
+  mutation RemovePeople($id: String!) {
+    removePeople(id: $id) {
+      id
+      firstName
+      lastName
+    }
+  }
+`
