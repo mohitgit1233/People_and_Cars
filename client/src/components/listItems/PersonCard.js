@@ -3,6 +3,7 @@ import { EditOutlined } from '@ant-design/icons'
 import { useState } from 'react'
 import RemovePeople from '../buttons/RemovePeople'
 import UpdatePeople from '../forms/UpdatePeople'
+import Car from '../lists/Car'
 
 
 const getStyles = () => ({
@@ -16,6 +17,8 @@ const PersonCard = props => {
     const [firstName, setFirstName] = useState(props.firstName)
     const [lastName, setLastName] = useState(props.lastName)
     const styles = getStyles()
+
+    console.log('locha',props.id)
 
     const [editMode,setEditMode] = useState(false)
 
@@ -47,14 +50,15 @@ const PersonCard = props => {
           updateStateVariable={updateStateVariable}
         />
       ) : (
-        <Card
+        <Card title={firstName + lastName} 
           style={styles.card}
           actions={[
             <EditOutlined key='edit' onClick={handleButtonClick} />,
             <RemovePeople id={id} />
           ]}
         >
-          {firstName} {lastName}
+          <Car person={props.id}/>
+      
         </Card>
       )}
     </div>

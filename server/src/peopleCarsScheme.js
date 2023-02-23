@@ -109,7 +109,7 @@ const typeDefs = gql`#graphql
     make : String
     model : String
     price : Float
-    personId(id: String): People
+    personId: String
   }
 
   type Query{
@@ -137,6 +137,8 @@ const typeDefs = gql`#graphql
         personId: String ):Car
 
       removeCar(id: String):Car
+
+      getCarByPersonId(id: String):Car
     
   }
 `
@@ -147,11 +149,11 @@ const resolvers = {
     cars: () => carsArray,
     
   },
-  Car: {
-    personId : ( args, context) => {
-      return find(peopleArray, { id: args.personId})
-    }
-  },
+  // Car: {
+  //   personId : ( args, context) => {
+  //     return find(peopleArray, { id: args.personId})
+  //   }
+  // },
   Mutation: {
     addPeople : (root,args) =>{
       const newPeople = {
@@ -219,6 +221,12 @@ const resolvers = {
       })
 
       return removedCar
+    },
+    getCarByPersonId: (root,args) =>{
+      const all_cars = find(carsArray, {personId : args.id})
+      if(!all_cars) throw new Error(`Couldn't find any cars for person with id = ${args.id}`)
+
+      return all_cars
     }
   }
   
