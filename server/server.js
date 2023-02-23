@@ -2,13 +2,14 @@
 import { ApolloServer } from 'apollo-server-express';
 import {ApolloServerPluginDrainHttpServer, AppolloServerPluginDrainHttpServer} from 'apollo-server-core';
 import express from 'express';
+const cors = require('cors')
 import http from 'http';
 import { resolvers, typeDefs } from './src/peopleCarsScheme';
 
 const startApolloServer = async(typeDefs,resolvers) =>{
 
     const app = express()
-
+    app.use(cors())
     const httpServer = http.createServer(app)
 
   
