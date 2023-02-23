@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import {v4 as uuidv4}  from 'uuid';
 import {Button, Form, Input,Dropdown, message, Space,} from 'antd'
-import { useMutation } from '@apollo/client';
-import { ADD_CAR, GET_CAR } from '../../queries';
+import { useMutation, useQuery } from '@apollo/client';
+import { ADD_CAR, GET_CAR, GET_PEOPLE } from '../../queries';
 import {  DownOutlined, UserOutlined  } from '@ant-design/icons';
 
 
 const AddCar = () => {
  
     const [addCar] = useMutation(ADD_CAR)
+    // const [items,setItems] = useState()
+    const { loading, error, data } = useQuery(GET_PEOPLE)
+    
     const [form] = Form.useForm()
     const id = uuidv4()
 
@@ -49,31 +52,19 @@ const AddCar = () => {
         })
     }
 
-    const items = [
+    const items = [];
+    if(data){
+    for(let i=0;i<data.people.length;i++){
+      items.push(
         {
-          label: '122st menu item',
-          key: '1',
+          label: data && data.people[i].firstName,
+          key: data && data.people[i].id,
           icon: <UserOutlined />,
-        },
-        {
-          label: '2nd menu item',
-          key: '2',
-          icon: <UserOutlined />,
-        },
-        {
-          label: '3rd menu item',
-          key: '3',
-          icon: <UserOutlined />,
-          danger: true,
-        },
-        {
-          label: '4rd menu item',
-          key: '4',
-          icon: <UserOutlined />,
-          danger: true,
-          disabled: true,
-        },
-      ];
+        }
+      )
+    }
+  }
+      console.log("seeeee",items)
     const menuProps = {
         items,
         onClick: handleMenuClick,
@@ -123,10 +114,10 @@ const AddCar = () => {
         name='price'
         rules={[{ required: true, message: 'Please input person' }]}
       >
-    <Dropdown menu={menuProps}>
+    <Dropdown  menu={menuProps}>
       <Button>
         <Space>
-          Button
+          Select a person
           <DownOutlined />
         </Space>
       </Button>
