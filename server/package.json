@@ -1,0 +1,27 @@
+{
+  "name": "people_and_cars",
+  "version": "1.0.0",
+  "description": "People and Cars CRUD app",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon ./server.js --exec babel-node -e js",
+    "test": "echo \"Error no test specified\" && exit"
+  },
+  "author": "Mohit Wadhwa",
+  "license": "MIT",
+  "dependencies": {
+    "@apollo/server": "^4.4.0",
+    "apollo-server-core": "^3.11.1",
+    "apollo-server-express": "^3.11.1",
+    "express": "^4.18.2",
+    "graphql": "^16.6.0",
+    "graphql-schema-merger": "^2.0.1",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "nodemon": "^2.0.20"
+  }
+}
