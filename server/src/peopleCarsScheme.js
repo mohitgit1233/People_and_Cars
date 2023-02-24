@@ -216,7 +216,7 @@ const resolvers = {
       car.price = args.price,
       car.personId = args.personId
       
-      return people
+      return car
     },
     removeCar: (root, args) => {
       const removedCar = find(carsArray, { id: args.id })

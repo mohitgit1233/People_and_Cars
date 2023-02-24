@@ -28,7 +28,7 @@ const CarCard = props => {
     }
 
     const updateStateVariable = (variable, value) => {
-      props.updateStateVariable(variable, value)
+
       switch (variable) {
           case 'year':
               setYear(value)

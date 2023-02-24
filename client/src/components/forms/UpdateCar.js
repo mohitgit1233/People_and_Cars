@@ -28,6 +28,7 @@ const UpdateCar = props => {
 
   const onFinish = values => {
     const { year,make,model,price, personId } = values
+    console.log("hey bro",values)
     updateCar({
       variables: {
         id,
@@ -44,15 +45,14 @@ const UpdateCar = props => {
     if(data){
     for(let i=0;i<data.people.length;i++){
       items.push(
-
           {
             value: data && data.people[i].id,
             label: data && data.people[i].firstName,
           }
-      
       )
     }
   }
+
   const updateStateVariable = (variable, value) => {
     props.updateStateVariable(variable, value)
     switch (variable) {
@@ -131,8 +131,12 @@ const UpdateCar = props => {
         />
     </Form.Item>
 
+    <Form.Item
+        name='personId'
+        rules={[{ required: true, message: 'Please input person' }]}
+      >
     <Select
-    defaultValue={personId}
+    default={personId}
       placeholder='Select a person'
       style={{
         width: 190,
@@ -140,6 +144,7 @@ const UpdateCar = props => {
       onChange={handleChange}
       options={items}
     />
+    </Form.Item>
 
       <Form.Item shouldUpdate={true}>
         {() => (
