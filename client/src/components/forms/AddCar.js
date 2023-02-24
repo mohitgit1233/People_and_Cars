@@ -9,9 +9,12 @@ import {  DownOutlined, UserOutlined  } from '@ant-design/icons';
 const AddCar = () => {
  
     const [addCar] = useMutation(ADD_CAR)
+    const [peopleData,setPeopleData] = useState(true)
     // const [items,setItems] = useState()
     const { loading, error, data } = useQuery(GET_PEOPLE)
-    
+
+ 
+  
     const [form] = Form.useForm()
     const id = uuidv4()
 
@@ -71,6 +74,8 @@ const AddCar = () => {
 
   return (
     <div>
+      {items.length > 0 ? 
+      <>
         <h2>Add Car</h2>
     <Form
       name='add-contact-form'
@@ -145,6 +150,7 @@ const AddCar = () => {
         )}
       </Form.Item>
     </Form>
+    </>: <></>    }
     </div>
   )
 }
