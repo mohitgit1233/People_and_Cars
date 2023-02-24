@@ -45,6 +45,7 @@ const AddPeople = () => {
         <h2 style={{ textAlign: 'center' }}>Add Person</h2>
     <Form
       name='add-contact-form'
+      width='70vw'
       form={form}
       layout='inline'
       onFinish={onFinish}
@@ -53,12 +54,14 @@ const AddPeople = () => {
     >
         <Form.Item
         name='firstName'
+        label='First Name'
         rules={[{ required: true, message: 'Please input your first name!' }]}
       >
         <Input placeholder='First Name' />
       </Form.Item>
       <Form.Item
         name='lastName'
+        label='Last Name'
         rules={[{ required: true, message: 'Please input your last name!' }]}
       >
         <Input placeholder='Last Name' />

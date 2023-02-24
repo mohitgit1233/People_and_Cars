@@ -84,11 +84,12 @@ const AddCar = () => {
       layout='inline'
       onFinish={onFinish}
       size='large'
+      
       style={{ marginBottom: '40px' }}
     >
         <Form.Item
         name='year'
-       
+        label='Year'
         rules={[{ required: true, message: 'Please input year!' }]}
       >
         <InputNumber  placeholder='Year' />
@@ -96,6 +97,7 @@ const AddCar = () => {
 
       <Form.Item
         name='make'
+        label='Make'
         rules={[{ required: true, message: 'Please input maker' }]}
       >
         <Input placeholder='Make' />
@@ -103,6 +105,7 @@ const AddCar = () => {
 
       <Form.Item
         name='model'
+        label='Model'
         rules={[{ required: true, message: 'Please input model' }]}
       >
         <Input placeholder='Model' />
@@ -111,6 +114,7 @@ const AddCar = () => {
 
       <Form.Item
         name='price'
+        label='Price'
         rules={[{ required: true, message: 'Please input price' }]}
       >
         <InputNumber 
@@ -123,6 +127,7 @@ const AddCar = () => {
 
       <Form.Item
         name='personId'
+        label='Person'
         rules={[{ required: true, message: 'Please input person' }]}
       >
      <Select

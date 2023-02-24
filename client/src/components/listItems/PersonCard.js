@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 
 const getStyles = () => ({
   card: {
-    width: '1200px'
+    width: '80vw'
   }
 })
 

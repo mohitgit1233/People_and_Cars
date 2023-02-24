@@ -95,6 +95,7 @@ const UpdateCar = props => {
   >
     <Form.Item
         name='year'
+        label='Year'
         rules={[{ required: true, message: 'Please input year' }]}
       >
         <InputNumber
@@ -106,6 +107,7 @@ const UpdateCar = props => {
     
     <Form.Item
         name='make'
+        label='Make'
         rules={[{ required: true, message: 'Please input maker' }]}
       >
         <Input
@@ -116,6 +118,7 @@ const UpdateCar = props => {
 
     <Form.Item
         name='model'
+        label='Model'
         rules={[{ required: true, message: 'Please input Model' }]}
       >
         <Input
@@ -126,6 +129,7 @@ const UpdateCar = props => {
 
     <Form.Item
         name='price'
+        label='Price'
         rules={[{ required: true, message: 'Please input price' }]}
       >
         <InputNumber
@@ -137,6 +141,7 @@ const UpdateCar = props => {
 
     <Form.Item
         name='personId'
+        label='Person'
         rules={[{ required: true, message: 'Please input person' }]}
       >
     <Select

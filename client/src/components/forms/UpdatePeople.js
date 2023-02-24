@@ -58,6 +58,7 @@ const UpdatePeople = props => {
   >
           <Form.Item
         name='firstName'
+        label='First Name'
         rules={[{ required: true, message: 'Please input your first name!' }]}
       >
         <Input
@@ -67,6 +68,7 @@ const UpdatePeople = props => {
       </Form.Item>
       <Form.Item
         name='lastName'
+        label='Last Name'
         rules={[{ required: true, message: 'Please input your last name!' }]}
       >
         <Input
