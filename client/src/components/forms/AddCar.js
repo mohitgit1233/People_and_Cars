@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {v4 as uuidv4}  from 'uuid';
-import {Button, Form, Input,Dropdown, message, Space,} from 'antd'
+import {Button, Form, Input,Dropdown, message, Space, Select,} from 'antd'
 import { useMutation, useQuery } from '@apollo/client';
 import { ADD_CAR, GET_CAR, GET_PEOPLE } from '../../queries';
 import {  DownOutlined, UserOutlined  } from '@ant-design/icons';
@@ -22,26 +22,30 @@ const AddCar = () => {
       }, [])
 
 
-      const handleMenuClick = (e) => {
-        message.info('Click on menu item.');
-        console.log('click', e);
+      const handleChange = (value) => {
+        console.log(`selected ${value}`);
       };
 
     const onFinish = values => {
-        const {year, make,model,price,person} = values
-        console.log(id)
+        const { y,make,model,p,personId} = values
+        const year = parseInt(y)
+        const price = parseFloat(p)
+       
+      
+        
         addCar(
              {
             variables:{
-                id,
+              id,
                 year,
                 make,
                 model,
                 price,
-                person
+                personId
             },
             update: (cache, { data: { addCar } }) => {
                 const data = cache.readQuery({ query: GET_CAR })
+                console.log("seeeeee",data)
                 cache.writeQuery({
                   query: GET_CAR,
                   data: {
@@ -56,19 +60,17 @@ const AddCar = () => {
     if(data){
     for(let i=0;i<data.people.length;i++){
       items.push(
-        {
-          label: data && data.people[i].firstName,
-          key: data && data.people[i].id,
-          icon: <UserOutlined />,
-        }
+
+          {
+            value: data && data.people[i].id,
+            label: data && data.people[i].firstName,
+          }
+      
       )
     }
   }
       console.log("seeeee",items)
-    const menuProps = {
-        items,
-        onClick: handleMenuClick,
-      };
+
       
 
   return (
@@ -83,10 +85,11 @@ const AddCar = () => {
       style={{ marginBottom: '40px' }}
     >
         <Form.Item
-        name='year'
+        name='y'
+       
         rules={[{ required: true, message: 'Please input year!' }]}
       >
-        <Input placeholder='Year' />
+        <Input  placeholder='Year' />
       </Form.Item>
 
       <Form.Item
@@ -103,25 +106,26 @@ const AddCar = () => {
         <Input placeholder='Model' />
       </Form.Item>
 
+
       <Form.Item
-        name='price'
+        name='p'
         rules={[{ required: true, message: 'Please input price' }]}
       >
         <Input  placeholder='$' />
       </Form.Item>
 
       <Form.Item
-        name='price'
+        name='personId'
         rules={[{ required: true, message: 'Please input person' }]}
       >
-    <Dropdown  menu={menuProps}>
-      <Button>
-        <Space>
-          Select a person
-          <DownOutlined />
-        </Space>
-      </Button>
-    </Dropdown>
+     <Select
+      placeholder='Select a person'
+      style={{
+        width: 190,
+      }}
+      onChange={handleChange}
+      options={items}
+    />
       </Form.Item>
 
       <Form.Item shouldUpdate={true}>

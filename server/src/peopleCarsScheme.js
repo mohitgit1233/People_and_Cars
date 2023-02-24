@@ -2,6 +2,7 @@ import { gql } from "apollo-server-express"
 import { find, remove } from "lodash";
 const { mergeTypeDefs } = require('graphql-schema-merger');
 
+
 const peopleArray = [
   {
     id: '1',
@@ -144,6 +145,7 @@ const typeDefs = gql`#graphql
 `
 
 const resolvers = {
+  
   Query: {
     people: () => peopleArray,
     cars: () => carsArray,
@@ -155,7 +157,9 @@ const resolvers = {
   //   }
   // },
   Mutation: {
+    
     addPeople : (root,args) =>{
+      
       const newPeople = {
         id : args.id,
         firstName: args.firstName,
@@ -188,14 +192,17 @@ const resolvers = {
     
     
     ,addCar : (root,args) => {
+   
       const newCar = {
         id : args.id,
         year: args.year,
         make:  args.make,
+        model: args.model,
         price : args.price,
         personId : args.personId
   
       }
+  
       carsArray.push(newCar)
   
       return newCar

@@ -19,6 +19,7 @@ const AddPeople = () => {
     const onFinish = values => {
         const {firstName, lastName} = values
         console.log(id)
+     
         addPeople(
              {
             variables:{
