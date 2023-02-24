@@ -12,12 +12,13 @@ const ShowFull= () => {
     const { loading, error, data } = useQuery(PEOPLE_AND_CARS, {
         variables: { id: params.id },
       });
+
+    
       
 
-    console.log('Finally',data && data.personWithCars[0].firstName)
   return (
     <div>
-        
+        {data && data.personWithCars.length > 0 ? <>
         <Card title = {(data && data.personWithCars[0].firstName) + ' ' + (data && data.personWithCars[0].lastName)} style={{margin:50,textAlign:'center'}}>
         {data && data.personWithCars.map(({ id, make, model, price, year })=>{
             return(
@@ -28,6 +29,7 @@ const ShowFull= () => {
                     <strong>Price:</strong> {price}
                    <br></br>
                    <strong>Year:</strong>  {year}
+                   
                 </List.Item>
                 <br/>
                 </>
@@ -35,6 +37,7 @@ const ShowFull= () => {
         })}
           
         </Card>
+        </>:  <h2 style={{textAlign:'center'}}>No Cars to Show</h2>}
         <Link to='/'><h3 style={{textAlign:'center'}}>GO BACK HOME</h3></Link>
     </div>
   )

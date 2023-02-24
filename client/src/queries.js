@@ -100,6 +100,7 @@ query PersonWithCars($id: String) {
     make
     model
     price
+    id
   }
 }
 `

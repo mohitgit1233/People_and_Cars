@@ -173,10 +173,11 @@ const resolvers = {
           year: all_cars[i].year,
           make: all_cars[i].make,
           model: all_cars[i].model,
-          price: all_cars[i].price
+          price: all_cars[i].price,
+          id:all_cars[i].id
         }
         result.push(personAndCars)
-      console.log('=>',result)
+      
       
     }
     return result
