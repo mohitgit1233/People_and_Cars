@@ -3,6 +3,7 @@ import { Card } from 'antd'
 import { EditOutlined } from '@ant-design/icons'
 import { useState } from 'react'
 import RemoveCar from '../buttons/RemoveCar'
+import UpdateCar from '../forms/UpdateCar'
 // import RemoveCard from '../buttons/RemovePeople'
 // import UpdateCard from '../forms/UpdatePeople'
 const getStyles = () => ({
@@ -27,30 +28,43 @@ const CarCard = props => {
     }
 
     const updateStateVariable = (variable, value) => {
-    //   switch (variable) {
-    //     case 'firstName':
-    //       setFirstName(value)
-    //       break
-    //     case 'lastName':
-    //       setLastName(value)
-    //       break
-    //     default:
-    //       break
-    //   }
+      props.updateStateVariable(variable, value)
+      switch (variable) {
+          case 'year':
+              setYear(value)
+              break
+          case 'make':
+              setMake(value)
+              break
+          case 'model':
+              setModel(value)
+              break
+          case 'price':
+              setPrice(value)
+              break
+          case 'personId':
+              setPersonId(value)
+              break
+        default:
+          break
+      }
     }
 
 
   return (
     <div>
-    {/* {editMode ? (
-      <UpdatePeople
+    {editMode ? (
+      <UpdateCar
         id={props.id}
-        firstName={props.firstName}
-        lastName={props.lastName}
+        year={props.year}
+        make={props.make}
+        model={props.model}
+        price={props.price}
+        personId={props.personId}
         onButtonClick={handleButtonClick}
         updateStateVariable={updateStateVariable}
       />
-    ) : ( */}
+    ) : (
       <Card title={year + '' + make + '' + model + '->' + '$' + price} 
       type = 'inner'
         // style={styles.card}
@@ -61,7 +75,7 @@ const CarCard = props => {
       >
     
       </Card>
-    {/* )} */}
+     )} 
   </div>
   )
 }

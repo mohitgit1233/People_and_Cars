@@ -50,7 +50,7 @@ const AddCar = () => {
                   query: GET_CAR,
                   data: {
                     ...data,
-                    people: [...data.car, addCar]
+                    cars: [...data.cars, addCar]
                   }
                 })}
         })

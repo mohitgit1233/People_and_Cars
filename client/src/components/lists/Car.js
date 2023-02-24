@@ -15,8 +15,6 @@ const Car = props => {
   const styles = getStyles()
   const person = useState(props.person)
 
-  console.log("12",person[0])
-
   const { loading, error, data } = useQuery(GET_CAR)
     // console.log(data)
   if (loading) return 'Loading...'

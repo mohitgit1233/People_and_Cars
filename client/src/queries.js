@@ -65,3 +65,16 @@ mutation AddCar($id: String!, $year: Int, $make: String!, $model: String!, $pric
   }
 }
 `
+
+export const UPDATE_CAR = gql`
+mutation UpdateCar($id: String, $year: Int, $make: String, $model: String, $price: Float, $personId: String) {
+  updateCar(id: $id, year: $year, make: $make, model: $model, price: $price, personId: $personId) {
+    id
+    year
+    make
+    model
+    price
+    personId
+  }
+}
+`
