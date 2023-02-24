@@ -9,6 +9,7 @@ import {  DownOutlined, UserOutlined  } from '@ant-design/icons';
 const AddCar = () => {
  
     const [addCar] = useMutation(ADD_CAR)
+    
     const [peopleData,setPeopleData] = useState(true)
     // const [items,setItems] = useState()
     const { loading, error, data } = useQuery(GET_PEOPLE)

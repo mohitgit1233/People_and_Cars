@@ -90,3 +90,16 @@ mutation RemoveCar($id: String) {
     personId
   }
 }`
+
+export const PEOPLE_AND_CARS = gql`
+query PersonWithCars($id: String) {
+  personWithCars(id: $id) {
+    firstName
+    lastName
+    year
+    make
+    model
+    price
+  }
+}
+`

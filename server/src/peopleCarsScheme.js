@@ -113,9 +113,20 @@ const typeDefs = gql`#graphql
     personId: String
   }
 
+  type myArray {
+    firstName: String
+    lastName: String
+    id: String
+    year: Int
+    make : String
+    model : String
+    price : Float
+  }
+
   type Query{
     people : [People]
     cars : [Car]
+    personWithCars(id: String):[myArray]
   }
 
   type Mutation{
@@ -139,7 +150,7 @@ const typeDefs = gql`#graphql
 
       removeCar(id: String):Car
 
-      getCarByPersonId(id: String):Car
+      
     
   }
 `
@@ -149,6 +160,27 @@ const resolvers = {
   Query: {
     people: () => peopleArray,
     cars: () => carsArray,
+    personWithCars: (root,args) => {
+      
+      const result = []
+      const person = find(peopleArray,{id : args.id})
+      
+      const all_cars = carsArray.filter(car => car.personId === args.id)
+      for(let i = 0;i<all_cars.length;i++){
+        const personAndCars = {
+          firstName: person.firstName,
+          lastName:  person.lastName,
+          year: all_cars[i].year,
+          make: all_cars[i].make,
+          model: all_cars[i].model,
+          price: all_cars[i].price
+        }
+        result.push(personAndCars)
+      console.log('=>',result)
+      
+    }
+    return result
+    }
     
   },
   // Car: {
@@ -229,12 +261,6 @@ const resolvers = {
       })
 
       return removedCar
-    },
-    getCarByPersonId: (root,args) =>{
-      const all_cars = find(carsArray, {personId : args.id})
-      if(!all_cars) throw new Error(`Couldn't find any cars for person with id = ${args.id}`)
-
-      return all_cars
     }
   }
   
