@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from '@apollo/client'
-import { Button, Form, Input, Select } from 'antd'
+import { Button, Form, Input, InputNumber, Select } from 'antd'
 import { useEffect, useState } from 'react'
 import { GET_PEOPLE, UPDATE_CAR } from '../../queries'
 
@@ -28,7 +28,8 @@ const UpdateCar = props => {
 
   const onFinish = values => {
     const { year,make,model,price, personId } = values
-    console.log("hey bro",values)
+   
+        console.log(typeof(year))
     updateCar({
       variables: {
         id,
@@ -55,6 +56,7 @@ const UpdateCar = props => {
 
   const updateStateVariable = (variable, value) => {
     props.updateStateVariable(variable, value)
+    
     switch (variable) {
         case 'year':
             setYear(value)
@@ -95,11 +97,12 @@ const UpdateCar = props => {
         name='year'
         rules={[{ required: true, message: 'Please input year' }]}
       >
-        <Input
+        <InputNumber
           placeholder='Year'
-          onChange={e => updateStateVariable('year', e.target.value)}
+          onChange={e => updateStateVariable('year', e)}
         />
     </Form.Item>
+
     
     <Form.Item
         name='make'
@@ -117,7 +120,7 @@ const UpdateCar = props => {
       >
         <Input
           placeholder='Model'
-          onChange={e => updateStateVariable('Model', e.target.value)}
+          onChange={e => updateStateVariable('model', e.target.value)}
         />
     </Form.Item>
 
@@ -125,9 +128,10 @@ const UpdateCar = props => {
         name='price'
         rules={[{ required: true, message: 'Please input price' }]}
       >
-        <Input
+        <InputNumber
           placeholder='Price'
-          onChange={e => updateStateVariable('price', e.target.value)}
+          formatter={(value) => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')} 
+          onChange={e => updateStateVariable('price', e)}
         />
     </Form.Item>
 

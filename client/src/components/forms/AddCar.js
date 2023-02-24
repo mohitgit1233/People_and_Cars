@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import {v4 as uuidv4}  from 'uuid';
-import {Button, Form, Input,Dropdown, message, Space, Select,} from 'antd'
+import {Button, Form, Input,Dropdown, message, Space, Select, InputNumber,} from 'antd'
 import { useMutation, useQuery } from '@apollo/client';
 import { ADD_CAR, GET_CAR, GET_PEOPLE } from '../../queries';
 import {  DownOutlined, UserOutlined  } from '@ant-design/icons';
@@ -27,12 +27,8 @@ const AddCar = () => {
       };
 
     const onFinish = values => {
-        const { y,make,model,p,personId} = values
-        const year = parseInt(y)
-        const price = parseFloat(p)
-       
-      
-        
+        const { year,make,model,price,personId} = values
+
         addCar(
              {
             variables:{
@@ -85,11 +81,11 @@ const AddCar = () => {
       style={{ marginBottom: '40px' }}
     >
         <Form.Item
-        name='y'
+        name='year'
        
         rules={[{ required: true, message: 'Please input year!' }]}
       >
-        <Input  placeholder='Year' />
+        <InputNumber  placeholder='Year' />
       </Form.Item>
 
       <Form.Item
@@ -108,10 +104,15 @@ const AddCar = () => {
 
 
       <Form.Item
-        name='p'
+        name='price'
         rules={[{ required: true, message: 'Please input price' }]}
       >
-        <Input  placeholder='$' />
+        <InputNumber 
+        formatter={(value) => `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')} 
+        placeholder='$'
+        style={{
+          width: 150,
+        }} />
       </Form.Item>
 
       <Form.Item
@@ -122,6 +123,7 @@ const AddCar = () => {
       placeholder='Select a person'
       style={{
         width: 190,
+        textAlign:'left'
       }}
       onChange={handleChange}
       options={items}

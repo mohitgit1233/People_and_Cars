@@ -4,6 +4,7 @@ import { EditOutlined } from '@ant-design/icons'
 import { useState } from 'react'
 import RemoveCar from '../buttons/RemoveCar'
 import UpdateCar from '../forms/UpdateCar'
+
 // import RemoveCard from '../buttons/RemovePeople'
 // import UpdateCard from '../forms/UpdatePeople'
 const getStyles = () => ({
@@ -17,7 +18,7 @@ const CarCard = props => {
     const [year, setYear] = useState(props.year)
     const [make, setMake] = useState(props.make)
     const [model, setModel] = useState(props.model)
-    const [price, setPrice] = useState(props.price)
+    const [price, setPrice] = useState(new Intl.NumberFormat('en-US').format(props.price))
     const [personId, setPersonId] = useState(props.personId)
     const styles = getStyles()
 
@@ -28,7 +29,7 @@ const CarCard = props => {
     }
 
     const updateStateVariable = (variable, value) => {
-
+       
       switch (variable) {
           case 'year':
               setYear(value)
@@ -40,7 +41,7 @@ const CarCard = props => {
               setModel(value)
               break
           case 'price':
-              setPrice(value)
+              setPrice(parseFloat(value))
               break
           case 'personId':
               setPersonId(value)
@@ -65,7 +66,7 @@ const CarCard = props => {
         updateStateVariable={updateStateVariable}
       />
     ) : (
-      <Card title={year + '' + make + '' + model + '->' + '$' + price} 
+      <Card title={year + '' + make + '' + model + '   ' + '->' + price} 
       type = 'inner'
         // style={styles.card}
         actions={[

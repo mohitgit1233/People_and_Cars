@@ -213,6 +213,7 @@ const resolvers = {
 
       car.year = args.year,
       car.make = args.make,
+      car.model = args.model,
       car.price = args.price,
       car.personId = args.personId
       
