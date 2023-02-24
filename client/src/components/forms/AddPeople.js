@@ -42,7 +42,7 @@ const AddPeople = () => {
 
   return (
     <div>
-        <h2 >Add Person</h2>
+        <h2 style={{ textAlign: 'center' }}>Add Person</h2>
     <Form
       name='add-contact-form'
       form={form}

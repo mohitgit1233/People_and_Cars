@@ -5,6 +5,16 @@ import People from './components/lists/People';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { ApolloProvider } from '@apollo/client';
 import AddCar from './components/forms/AddCar';
+import {
+  Routes,
+  Route,
+  Outlet,
+  Link,
+  useMatch,
+  useResolvedPath,
+} from "react-router-dom";
+import ShowFull from './components/fullPage/ShowFull';
+import Home from './components/Home';
 
 const client = new ApolloClient({
   uri: "http://localhost:4000/graphql",
@@ -17,10 +27,14 @@ const App = () => {
     <ApolloProvider client = {client}>
     <div className="App">
       <Title/>
-      <AddPeople />
-      <AddCar />
-      <People />
+    
+      
     </div>
+    <Routes>
+    <Route path='/' element={<Home/>}/>
+        <Route path='/people/:id' element={<ShowFull />}>
+        </Route>
+      </Routes>
     </ApolloProvider>
   );
 }

@@ -76,7 +76,7 @@ const AddCar = () => {
     <div>
       {items.length > 0 ? 
       <>
-        <h2>Add Car</h2>
+        <h2 style={{ textAlign: 'center' }} >Add Car</h2>
     <Form
       name='add-contact-form'
       form={form}

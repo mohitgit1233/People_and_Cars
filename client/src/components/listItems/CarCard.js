@@ -66,7 +66,7 @@ const CarCard = props => {
         updateStateVariable={updateStateVariable}
       />
     ) : (
-      <Card title={year + '' + make + '' + model + '   ' + '->' + price} 
+      <Card title={year + '  ' + make + '  ' + model + '   ' + ' -> ' + price} 
       type = 'inner'
         // style={styles.card}
         actions={[
